@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Design Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" rel="stylesheet">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #111827;
+            --secondary-color: #10B981;
+            --accent-color: #FBBF24;
+            --bg-color: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text-color: #111827;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--primary-color)
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: #fff !important
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(16, 185, 129, 0.1)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            border-radius: 12px;
+            padding: 100px 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .hero h1 {
+            font-weight: 700;
+            font-size: 2.8rem
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #374151
+        }
+
+        .btn-accent {
+            background: var(--secondary-color);
+            color: #fff;
+            border: none
+        }
+
+        /* Hero*/
+        <!-- .blink {
+            animation: blinkText 1s infinite;
+            font-weight: 800;
+            color: var(--secondary-color);
+        }
+
+        @keyframes blinkText {
+
+            0%,
+            50%,
+            100% {
+                opacity: 1;
+            }
+
+            25%,
+            75% {
+                opacity: 0;
+            }
+        }-->
+        .hero-heading {
+            position: relative;
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        .text {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            color: var(--secondary-color);
+            animation: alternateBlink 4s infinite;
+        }
+
+        .normal-text {
+            display: inline;
+            /* normal text flow me rahe */
+            color: #fbfbf8;
+        }
+
+        .text.web-designer {
+            animation-delay: 0s;
+        }
+
+        .text.my-name {
+            animation-delay: 2s;
+            /* Half of total animation duration */
+        }
+
+        @keyframes alternateBlink {
+
+            0%,
+            45% {
+                opacity: 1;
+            }
+
+            50%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+
+        /* Buttons */
+        /* Common button styles */
+        .custom-btn {
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+
+        }
+
+        /* Primary background for Projects button */
+        .custom-btn-bg {
+            background-color: var(--secondary-color);
+            color: #fff;
+            border: none;
+        }
+
+        .custom-btn-bg:hover {
+            background-color: #0f9a6e;
+            /* slightly darker on hover */
+            color: #fff;
+            transform: scale(1.1);
+            /* slightly enlarge */
+            transition: transform 0.3s ease;
+        }
+
+        /* Outline style for Resume button */
+        .custom-btn-outline {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .custom-btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+            border: 2px solid var(--secondary-color);
+        }
+
+        /* Icon spacing */
+        .custom-btn i {
+            vertical-align: middle;
+        }
+
+        /* Spacing between buttons */
+        .hero-buttons .mr-lg-2 {
+            margin-right: 0.5rem;
+            /* Bootstrap mr-lg-2 */
+        }
+
+        /* Designs */
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: #10B981;
+        }
+
+        /* Masonry Grid */
+        .masonry {
+            column-count: 3;
+            column-gap: 1rem;
+        }
+
+        .masonry-item {
+            background: #fff;
+            margin-bottom: 1rem;
+            display: inline-block;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .masonry-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Hover Overlay */
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(17, 24, 39, 0.8);
+            /* dark semi-transparent */
+            color: #fff;
+            padding: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .masonry-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay h4 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .overlay p {
+            margin: 5px 0 10px;
+            font-size: 0.9rem;
+        }
+
+        .overlay a {
+            display: inline-block;
+            background: #10B981;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .overlay a:hover {
+            background: #0f9a6e;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .masonry {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .masonry {
+                column-count: 1;
+            }
+        }
+
+
+        /* Projects */
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px)
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 60px 20px;
+            text-align: center
+        }
+
+        .about-section h2 {
+            font-weight: 700;
+            margin-bottom: 20px
+        }
+
+        /* Timeline Container*/
+        .timeline-wrapper {
+            position: relative;
+            padding: 22px 0;
+        }
+
+        .timeline-wrapper:last-child:before {
+            height: 0;
+        }
+
+        .timeline-wrapper:before {
+            content: "";
+            background: #111827;
+            width: 3px;
+            height: 100%;
+            position: absolute;
+            left: 38px;
+        }
+
+        .timeline-yr {
+            background: #111827;
+            border-radius: 100%;
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            line-height: 75px;
+            text-align: center;
+        }
+
+        .timeline-yr span {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+            line-height: 75px;
+        }
+
+        .timeline-info {
+            display: inline-block;
+            vertical-align: top;
+            max-width: 432px;
+            margin-left: 6em;
+        }
+
+        .timeline-info small {
+            color: #010005;
+            font-size: 16px;
+            font-weight: bold;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 15px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 60px 20px;
+            background: var(--primary-color);
+            color: #fff
+        }
+
+        .contact-section input,
+        .contact-section textarea {
+            border-radius: 8px;
+            border: none;
+            padding: 10px
+        }
+
+        .contact-section button {
+            background: var(--accent-color);
+            border: none;
+            color: #fff;
+            border-radius: 8px;
+            padding: 10px 20px
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: #9CA3AF;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px
+        }
+
+        footer a {
+            color: #fff;
+            margin: 0 10px
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">My Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span
+                    class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+
+    <section class="hero">
+        <!-- <h1>Hello, I'm a Web Designer</h1> -->
+
+
+        <h1 class="normal-text">Hello, I'm </h1>
+        <h1 class="hero-heading">
+
+            <span class="text web-designer">Web Designer</span>
+            <span class="text my-name">Uzma Usmani</span>
+        </h1>
+
+        <!-- <h3 class="mt-5 text-white bg-secondary">Designing beautiful websites and turning ideas into reality.</h3> -->
+        <h3 class="mt-5 text-white px-3 py-2"
+            style="background-color: var(--primary-color); display:inline-block; border-radius: 6px;">
+            Designing beautiful websites and turning ideas into reality.
+        </h3>
+        <!-- <a href="#projects" class="btn btn-accent mt-3">View Projects</a>
+    <a href="https://drive.google.com/your-resume-link" target="_blank" class="btn btn-accent mt-3">
+        <i class="fas fa-file-alt me-2"></i> Resume
+    </a> -->
+
+        <div class="mt-4 justify-content-center  d-flex gap-3">
+            <a href="#projects" class="btn btn-accent">View Projects</a>
+            <a href="https://drive.google.com/your-resume-link" target="_blank" class="btn btn-accent">
+                <i class="fas fa-file-alt me-2"></i> Resume
+            </a>
+        </div>
+
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section mb-4 py-4">
+        <h2>About Me</h2>
+            <p>
+                I am passionate about UI/UX design and frontend development. 
+            <p>I convert ideas and designs into responsive websites using <span style="font-weight:700; color:var(--secondary-color)">HTML, CSS, and Bootstrap</span>.</p>
+            <p>I also create stunning designs using <span style="font-weight:700; color:var(--secondary-color)">Adobe
+                    Photoshop</span>.
+            </p>
+    </section>
+
+    <!--Designs-->
+
+    <h2 class="mb-4 py-4 text-center">My Creative Design Works</h2>
+
+    <div class="masonry container">
+        <!-- Item 1 -->
+        <div class="masonry-item">
+            <img src="images/2-WebDesignDesktop.png" alt="Web Design">
+            <div class="overlay">
+                <h4>Web Design</h4>
+                <p>Mockup of desktop UI</p>
+                <!-- <a href="#">View Project</a> -->
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="masonry-item">
+            <img src="images/DesignWebDesktop.png" alt="Weather App">
+            <div class="overlay">
+                <h4>Web Design</h4>
+                <p>Mockup of desktop UI</p>
+                <!-- <a href="#">View Project</a> -->
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="masonry-item">
+            <img src="images/MockUpCanva.png" alt="India Ageless">
+            <div class="overlay">
+                <h4>Web & Mobile App Design</h4>
+                <p>Mock Up of Different Screens</p>
+                <!-- <a href="#">View Project</a> -->
+            </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="masonry-item">
+            <img src="images/DesignWebUpwork.png" alt="Voice Assistant">
+            <div class="overlay">
+                <h4>Web & Mobile App Design</h4>
+                <p>Mock Up of Different Screens</p>
+                <!-- <a href="#">View Project</a> -->
+            </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="masonry-item">
+            <img src="images/Dual-Color-Exposure.png" alt="E-Commerce Dashboard">
+            <div class="overlay">
+                <h4>Adobe Photoshop Picture</h4>
+                <p>Edited in Adobe Photoshop</p>
+                <!-- <a href="#">View Project</a> -->
+            </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="masonry-item">
+            <img src="images/bannerUpwork.png" alt="Voice Assistant">
+            <div class="overlay">
+                <h4>Banner Ad</h4>
+                <p>Created using Adobe Photoshop</p>
+                <!-- <a href="#">View Project</a> -->
+            </div>
+        </div>
+
+        <!-- Item 7 -->
+        <div class="masonry-item">
+            <img src="images/scenary2.png" alt="Voice Assistant">
+            <div class="overlay">
+                <h4>Voice Assistant</h4>
+                <p>AI-powered assistant mockup</p>
+                <a href="#">View Project</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container mt-5">
+        <h2 class="text-center mb-4">My Projects</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="project-card">
+                    <img src="images/Health-Desktop-Website.png"
+                        alt="Project 1">
+                    <div class="p-3">
+                        <h5>Health Blog</h5>
+                        <p>PSD to HTML/CSS/Bootstrap conversion showcasing health content.</p>
+                        <a href="https://health-living-website.vercel.app/" class="btn btn-sm btn-accent mt-2">View Live</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="project-card">
+                    <img src="images/Lifestyle.png"
+                        alt="Project 2">
+                    <div class="p-3">
+                        <h5>Lifestyle Blog</h5>
+                        <p>Showcasing fashion, beauty, and daily routines with interactive design.</p>
+                        <a href="https://lifestyle-website-six.vercel.app/" class="btn btn-sm btn-accent mt-2">View Live</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="project-card">
+                    <img src="images/Tech.png"
+                        alt="Project 3">
+                    <div class="p-3">
+                        <h5>Tech Blog</h5>
+                        <p>Latest gadgets, tutorials, and coding guides using modern UI.</p>
+                        <a href="https://tech-blog-website-two.vercel.app/" class="btn btn-sm btn-accent mt-2">View Live</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>3
+
+    <!-- TECHNICAL SKILLS -->
+    <section class="skills py-5 d-lg-flex justify-content-center align-items-center" id="skills">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <h2 class="mb-4 text-center">Technical Skills</h2>
+                    <div class="row">
+
+                        <!-- Card for Programming Languages -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body"
+                                    style="background: linear-gradient(to bottom, #7a97f08f 0%, #9ae1f5 100%);">
+                                    <h4 class="mb-3">Languages</h4>
+                                    <h5>Python</h5>
+                                    <div class="progress mb-3" style="width: 100%; height: 20px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%"
+                                            aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">Intermediate</div>
+                                    </div>
+
+                                    <h5>JavaScript</h5>
+                                    <div class="progress mb-3" style="width: 100%; height: 20px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%"
+                                            aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">Intermediate</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card for Technologies and Frameworks -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body"
+                                    style="background: linear-gradient(to bottom, #7a97f08f 0%, #9ae1f5 100%);">
+                                    <h4 class="mb-3">Technologies/Frameworks</h4>
+                                    <h5>Linux</h5>
+                                    <div class="progress mb-3" style="width: 100%; height: 20px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Basic</div>
+                                    </div>
+                                    <h5>Flask</h5>
+                                    <div class="progress mb-3" style="width: 100%; height: 20px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Basic</div>
+                                    </div>
+
+                                    <h5>Django</h5>
+                                    <div class="progress mb-3" style="width: 100%; height: 20px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Basic</div>
+                                    </div>
+
+                                    <h5>Machine Learning (ML)</h5>
+                                    <div class="progress mb-3" style="width: 100%; height: 20px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Basic</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card for Frontend -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body"
+                                    style="background: linear-gradient(to bottom, #7a97f08f 0%, #9ae1f5 100%);">
+                                    <h4 class="mb-3">Frontend</h4>
+                                    <h5>HTML, CSS, Tailwind CSS, Bootstrap</h5>
+                                    <div class="progress mb-3" style="width: 100%; height: 20px;">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 90%"
+                                            aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">Advanced</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Card for Databases -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body"
+                                    style="background: linear-gradient(to bottom, #7a97f08f 0%, #9ae1f5 100%);">
+                                    <h4 class="mb-3">Databases</h4>
+                                    <h5>SQL</h5>
+                                    <div class="progress mb-3" style="width: 100%; height: 20px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%"
+                                            aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">Intermediate</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card for Cloud -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body"
+                                    style="background: linear-gradient(to bottom, #7a97f08f 0%, #9ae1f5 100%);">
+                                    <h4 class="mb-3">Cloud</h4>
+                                    <h5>AWS & IBM Cloud</h5>
+                                    <div class="progress mb-3" style="width: 100%; height: 20px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Basic</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card for Version Control -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body"
+                                    style="background: linear-gradient(to bottom, #7a97f08f 0%, #9ae1f5 100%);">
+                                    <h4 class="mb-3">Version Control</h4>
+                                    <h5>Git & GitHub</h5>
+                                    <div class="progress mb-3" style="width: 100%; height: 20px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Basic</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card for Visualization Tools -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body"
+                                    style="background: linear-gradient(to bottom, #7a97f08f 0%, #9ae1f5 100%);">
+                                    <h4 class="mb-3">Visualization Tools</h4>
+                                    <h5>Power BI</h5>
+                                    <div class="progress mb-3" style="width: 100%; height: 20px;">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 70%"
+                                            aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">Intermediate</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card for Other Skills -->
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body"
+                                    style="background: linear-gradient(to bottom, #7a97f08f 0%, #9ae1f5 100%);">
+                                    <h4 class="mb-3">Other Skills</h4>
+                                    <h5>Docker & REST APIs</h5>
+                                    <div class="progress mb-3" style="width: 100%; height: 20px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"
+                                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Basic</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!-- End of row -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section class="resume py-5 d-lg-flex justify-content-center align-items-center" id="resume">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 col-12">
+                    <h2 class="mb-4">Internships</h2>
+
+                    <div class="timeline">
+                        <div class="timeline-wrapper">
+                            <div class="timeline-yr">
+                                <span>2024</span>
+                            </div>
+                            <div class="timeline-info">
+                                <h3><span>AI Intern</span><small>National Skill Technical Institute</small></h3>
+                                <p>Completed 5 months of internship from IBM in NSTI-Bhubaneswar and completed a project
+                                    Raksha Alert.
+                                </p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="timeline-wrapper">
+                            <div class="timeline-yr">
+                                <span>2023</span>
+                            </div>
+                            <div class="timeline-info">
+                                <h3><span>Python Intern</span><small>Remote</small></h3>
+                                <p>Completed 1 month of remote internship in Python and completed Python tasks.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <h2 class="mb-4 mobile-mt-2">Educations</h2>
+
+                    <div class="timeline-wrapper">
+                        <div class="timeline-yr">
+                            <span>2024</span>
+                        </div>
+                        <div class="timeline-info">
+                            <h3><span>Advanced Diploma in IT</span><small>National Skill Technical Institue,
+                                    Bhubaneswar</small></h3>
+                            <p>Successfully completed Advanced Diplima in Information Tecnology in 2024.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-wrapper">
+                            <div class="timeline-yr">
+                                <span>2017</span>
+                            </div>
+                            <div class="timeline-info">
+                                <h3><span>BA, English Honours</span><small>Tilka Manjhi Bhagalpur University,
+                                        Bhagalpur</small></h3>
+                                <p>
+                                    I hold an English Honours degree, where I explored both British and Indian literary
+                                    landscapes."</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-wrapper">
+                            <div class="timeline-yr">
+                                <span>2023</span>
+                            </div>
+                            <div class="timeline-info">
+                                <h3><span>Senior Secondary XII, Science</span><small>Mahila Mahavidyalaya, Godda</small>
+                                </h3>
+                                <p>Successfully completed my 12th grade at Mahila Mahavidyalaya in the Science stream
+                                    with PCB.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-wrapper">
+                            <div class="timeline-yr">
+                                <span>2011</span>
+                            </div>
+                            <div class="timeline-info">
+                                <h3><span>Secondary X</span><small>Millia Convent English School,Purnea</small></h3>
+                                <p>Successfully completed my 10th at Millia Convent English School from CBSE board.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FOOTER -->
+    <footer class="footer py-5" id="contact">
+        <div class="container">
+            <div class="row">
+
+                <!-- Left Column: Social Media and Contact Info -->
+                <div class="col-lg-5 col-md-12 mb-4">
+                    <h2 class="mb-4 text-center" style="color: rgb(249, 249, 252);">Connect with me on</h2>
+
+                    <ul class="list-unstyled text-center">
+                        <li class="mb-3">
+                            <a href="mailto:uzmausmani0143@gmail.com" target="_blank" class="footer-icon">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="https://www.linkedin.com/in/uzma-usmani-ai-ml/" target="_blank"
+                                class="footer-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="https://aiskillsbuild.hashnode.dev/" target="_blank" class="footer-icon">
+                                <i class="fab fa-hashnode"></i>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="https://github.com/uzmausmani0143" target="_blank" class="footer-icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </li>
+
+                        <li class="mb-3">
+                            <a href="https://www.instagram.com/usmani_uzma/" target="_blank" class="footer-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+
+                        <li class="mb-3">
+                            <a href="https://www.upwork.com/freelancers/~01292be9f554b05183?viewMode=1" target="_blank"
+                                class="footer-icon">
+                                <i class="fa-brands fa-upwork"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Right Column: Contact Form -->
+                <div class="col-lg-7 col-md-12">
+                    <div class="contact-form">
+                        <h2 class="mb-4" style="color: rgb(254, 254, 255);">Interested to work together? Let's talk</h2>
+
+                        <form action="https://api.web3forms.com/submit" method="POST">
+                            <input type="hidden" name="access_key" value="a668d2ca-33a2-4a0c-ba9e-6e67d67cde89">
+
+                            <div class="row">
+                                <div class="col-lg-6 col-12 mb-3">
+                                    <input type="text" class="form-control" name="name" placeholder="Your Name"
+                                        id="name" required>
+                                </div>
+
+                                <div class="col-lg-6 col-12 mb-3">
+                                    <input type="email" class="form-control" name="email" placeholder="Your Email"
+                                        id="email" required>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                                    <textarea name="message" rows="6" class="form-control" id="message"
+                                        placeholder="Your Message" required></textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <input type="submit" class="form-control submit-btn btn btn-primary"
+                                        value="Send Message">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-12 mt-4">
+                    <p class="copyright-text text-center text-white">&copy; © 2025 My Portfolio | uzmausmani0143.pro |
+                        Designed & Developed by Me</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <script src="https://kit.fontawesome.com/your-kit-id.js" crossorigin="anonymous"></script> -->
+
+</body>
+
+</html>
